@@ -18,10 +18,15 @@
     <div class="row container">
                 <div class="col sm-6 container">
                     <h5>Search for</h5>
-                    <div></div>
+                    <form action="select search type">
+                        <label for="lodging"><input id="lodging" type="radio" name="search-type" value="lodging"> Accommodation</label>
+                        <label for="restaurant"><input id="restaurant" type="radio" name="search-type" value="restaurant"> Restaurants</label>
+                        <label for="tourist_attraction"><input id="tourist_attraction" type="radio" name="search-type" value="tourist_attraction"> Tourist Attraction</label>
+                    </form>
                 </div>
-                <div class="col sm-6 container">
-                    <h5>City search</h5>
+                <div class="col sm-6 container" id="location">
+                    <h5>City</h5>
+                    <input type="text" id="autocomplete" placeholder="Enter a city" />
                     <div></div>
                 </div>  
         </div>
@@ -42,8 +47,9 @@
     </footer>
 
     <script src="assets/js/maps.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7rqweQvMtTgcaSdzqrt5rzsHCu17UkSU&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSeBtlFPGJChszhyYH36WVIAvErsusR0M&libraries=places&callback=initMap"></script>
      
        
 </body>
