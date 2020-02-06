@@ -2,6 +2,7 @@ var map, places;
 var markers = [];
 var autocomplete;
 var countryRestrict = {'country': 'za'};
+var infoWindow;     
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -9,18 +10,22 @@ function initMap() {
         center: {
             lat: -28.7282,
             lng: 24.7499
-        }
+        },
     });
-   
+
     autocomplete = new google.maps.places.Autocomplete((
         document.getElementById('autocomplete')), {
             types: ['(cities)'],
             componentRestrictions: countryRestrict
     });
-       
+
     autocomplete.addListener('place_changed', onPlaceChanged);
 
     places = new google.maps.places.PlacesService(map);
+
+    infoWindow = new google.maps.InfoWindow({
+        content: document.getElementById('iw-content')
+    });
 }
 
 function onPlaceChanged() {
@@ -35,7 +40,7 @@ function onPlaceChanged() {
 }
 
 function search() {
-    var searchType = $('input[name=searchType]:checked').val();
+    var searchType = $('input[name=searchType]:checked').val();   
     var search = {
         bounds: map.getBounds(),
         types: [searchType]
@@ -48,6 +53,8 @@ function search() {
                 markers[i] = new google.maps.Marker({
                     position: results[i].geometry.location
                 });
+            markers[i].placeResult = results[i];
+            google.maps.event.addListener(markers[i], 'click', showInfoWindow);
             setTimeout(addMarker(i), i * 100);
             }
         }
@@ -69,4 +76,37 @@ function addMarker(i) {
     };
 }
 
- 
+function showInfoWindow() {
+    var marker = this;
+    places.getDetails({placeId: marker.placeResult.place_id},
+    function(place, status) {
+              if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                return;
+              }
+              infoWindow.open(map, marker);
+              createInfoWindow(place);
+    });
+}
+
+function createInfoWindow(place) {
+    document.getElementById('iw-icon').innerHTML = '<img ' + 'src="' + place.icon + '"/>';
+    document.getElementById('iw-name').innerHTML = '<b><a href="' + place.website + '">' + place.name + '</a></b>';
+    document.getElementById('iw-address').innerHTML = place.vicinity;
+    document.getElementById('iw-phone').innerHTML = place.formatted_phone_number;    
+    
+    if (place.rating) {
+        var ratingHtml = '';
+        for (var i = 0; i < 5; i++) {
+            if (place.rating < (i + 0.5)) {
+                ratingHtml += '&#10025;';
+            } else {
+                ratingHtml += '&#10029;';
+            }
+            document.getElementById('iw-rating-row').style.display = '';
+            document.getElementById('iw-rating').innerHTML = ratingHtml;
+        }
+        } else {
+            document.getElementById('iw-rating-row').style.display = 'none';
+        }
+    document.getElementById(iw-website).innerHTML = place.website;
+}

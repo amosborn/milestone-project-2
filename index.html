@@ -9,33 +9,61 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/style.css" type="text/css">
 </head>
-
+  
 <body>
     <header>
         <div class="navbar navbar-light bg-">Heading</div>
     </header>
-    <div>Images</div>
-    <div class="row container">
-                <div class="col sm-6 container">
-                    <h5>Search for:</h5>
-                    <form action="select search type">
-                        <label for="lodging"><input id="lodging" type="radio" name="searchType" value="lodging"> Accommodation</label>
-                        <label for="restaurant"><input id="restaurant" type="radio" name="searchType" value="restaurant"> Restaurants</label>
-                        <label for="tourist_attraction"><input id="tourist_attraction" type="radio" name="searchType" value="tourist_attraction"> Tourist Attraction</label>
-                    </form>
-                </div>
-                <div class="col sm-6 container" id="location">
-                    <h5>Select city:</h5>
-                    <input type="text" id="autocomplete" placeholder="Enter a city" />
-                    <div></div>
-                </div>  
-        </div>
-            <div class="row">
-                <div class="col">
-                    <h5>Map</h5>
-                    <div id="map"></div>
-                </div>
+    <div>
+        <p>Images & intro</p>
+        <div class="row container">
+            <div class="col sm-6 container">
+                <h5>Search for:</h5>
+                <form>
+                    <span><label for="lodging"><input id="lodging" type="radio" name="searchType" value="lodging">  Accommodation</label></span>
+                    <label for="restaurant"><input id="restaurant" type="radio" name="searchType" value="restaurant"><span>  Restaurants</span></label>
+                    <span><label for="tourist_attraction"><input id="tourist_attraction" type="radio" name="searchType" value="tourist_attraction">  Tourist Attraction</label></span>
+                </form>
             </div>
+            <div class="col sm-6 container" id="location">
+                <h5>Select city:</h5>
+                <input type="text" id="autocomplete" placeholder="Enter a city" />
+                <div></div>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5>Map</h5>
+                <div id="map"></div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="infowindow">
+      <div id="iw-content">
+        <table>
+          <tr>
+            <td id="iw-icon" class="iw-icon"></td>
+            <td id="iw-name"></td>
+          </tr>
+          <tr>
+            <td class="iw-heading">Address:</td>
+            <td id="iw-address"></td>
+          </tr>
+          <tr>
+            <td class="iw-heading">Telephone:</td>
+            <td id="iw-phone"></td>
+          </tr>
+          <tr id="iw-rating-row">
+            <td class="iw-heading">Rating:</td>
+            <td id="iw-rating"></td>
+          </tr>
+          <tr>
+            <td class="iw=heading">Website:</td>
+            <td id="iw-website"></td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <footer class="container-fluid">
@@ -51,7 +79,6 @@
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSeBtlFPGJChszhyYH36WVIAvErsusR0M&libraries=places&callback=initMap"></script>
      
-       
-</body>
+ </body>    
 
 </html>
