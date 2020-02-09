@@ -12,39 +12,56 @@
   
 <body>
     <header>
-        <div class="navbar navbar-light bg-">Heading</div>
+        <div class="navbar navbar-light navbar-heading"><h2><span class="heading-color">Discover!</span> South Africa</h2></div>
     </header>
-    <div>
-        <p>Images & intro</p>
-        <div class="row container">
-            <div class="col sm-6 container">
+    <div class="row">
+        <div class="col container-fluid callout-container">
+            <div class="row callout-text">
+                <p>Plan your South African holiday by searching for hotels, restaurants and tourist attractions on the map below.</p>
+            </div>  
+        </div>
+        </div>
+    </div>
+    <div> 
+        <div class="row">
+            <div class="col spacer"></div>
+        </div>   
+        <div class="row container search-section">
+            <div class="col-sm-1"></div>
+            <div class="col col-sm-5 container ">
                 <h5>Search for:</h5>
                 <form>
-                    <span><label for="lodging"><input id="lodging" type="radio" name="searchType" value="lodging">  Accommodation</label></span>
-                    <label for="restaurant"><input id="restaurant" type="radio" name="searchType" value="restaurant"><span>  Restaurants</span></label>
-                    <span><label for="tourist_attraction"><input id="tourist_attraction" type="radio" name="searchType" value="tourist_attraction">  Tourist Attraction</label></span>
+                    <span><label for="lodging"><input id="lodging" type="radio" name="searchType" value="lodging" checked>  Accommodation</label></span><br>
+                    <span><label for="restaurant"><input id="restaurant" type="radio" name="searchType" value="restaurant">  Restaurants</label></span><br>
+                    <span><label for="tourist_attraction"><input id="tourist_attraction" type="radio" name="searchType" value="tourist_attraction">  Tourist Attraction</label></span><br>
                 </form>
             </div>
-            <div class="col sm-6 container" id="location">
+            <div class="col col-sm-4 container" id="location">
                 <h5>Select city:</h5>
-                <input type="text" id="autocomplete" placeholder="Enter a city" />
-                <div></div>
+                <form action="">
+                    <input type="text" id="autocomplete" placeholder="Enter a city" /><br>
+                    <input type="reset" value="Reset" class="resetbutton"/>
+                </form>
             </div> 
         </div>
-        <div class="row">
-            <div class="col">
-                <h5>Map</h5>
-                <div id="map"></div>
-            </div>
-        </div> 
     </div>
 
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col" id="map"></div>
+        <div class="col-sm-1"></div>
+    </div>
+
+    <div class="row">
+        <div class="col spacer"></div>
+    </div>
+  
     <div class="infowindow">
       <div id="iw-content">
         <table>
           <tr>
             <td id="iw-icon" class="iw-icon"></td>
-            <td id="iw-name"></td>
+            <td id="iw-name" target="_blank"></td>
           </tr>
           <tr>
             <td class="iw-heading">Address:</td>
@@ -67,8 +84,19 @@
     </div>
 
     <footer class="container-fluid">
-        <div class="row" id="footer-details">
-            <div class="col ">
+        <div class="row" id="footer">
+            <div class="col-6 footer-col">
+                <ul class="list-inline footer-links">
+                    <li class="list-inline-item"><h6>More inspiration: </h6></li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/southafrica/" target="_blank">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 footer-col">
                 <h6>Copyright 2020</h6>
             </div>
         </div>
@@ -79,6 +107,6 @@
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSeBtlFPGJChszhyYH36WVIAvErsusR0M&libraries=places&callback=initMap"></script>
      
- </body>    
+</body>    
 
 </html>
