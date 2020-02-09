@@ -50,8 +50,10 @@ function search() {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             clearMarkers();
             for (var i = 0; i < results.length; i++) {
+                var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
                 markers[i] = new google.maps.Marker({
-                    position: results[i].geometry.location
+                    position: results[i].geometry.location,
+                    label: labels[i % labels.length]
                 });
             markers[i].placeResult = results[i];
             google.maps.event.addListener(markers[i], 'click', showInfoWindow);
@@ -90,8 +92,9 @@ function showInfoWindow() {
 
 function createInfoWindow(place) {
     document.getElementById('iw-icon').innerHTML = '<img ' + 'src="' + place.icon + '"/>';
-    document.getElementById('iw-name').innerHTML = '<b><a href="' + place.website + '">' + place.name + '</a></b>';
+    document.getElementById('iw-name').innerHTML = place.name;
     document.getElementById('iw-address').innerHTML = place.vicinity;
+    
     document.getElementById('iw-phone').innerHTML = place.formatted_phone_number;    
     
     if (place.rating) {
@@ -108,5 +111,10 @@ function createInfoWindow(place) {
         } else {
             document.getElementById('iw-rating-row').style.display = 'none';
         }
-    document.getElementById(iw-website).innerHTML = place.website;
+
+       if (place.website == null) {
+            document.getElementById('iw-website').innerHTML = ' '
+        } else {
+            document.getElementById('iw-website').innerHTML = '<a target="_blank" href="' + place.website +'">' + place.website + '</a>';
+        } 
 }
