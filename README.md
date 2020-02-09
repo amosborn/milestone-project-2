@@ -25,6 +25,9 @@ I would like to add a list display of the results, possibly on bootstrap cards, 
 I have tested this site as a potential user. Default radio button is checked city can't be search without a button being selected first. Autocomplete gives the user city options. The infowindow has been tested and if no website is available no link will be offered. Footer links have been tested to open to correct page and open a new page with target="_blank".
 I found the map zoom I had originally chosen for the cities only displayed city center areas, which are often not the tourist areas, so I set the zoom further out.
 
+## Deployment
+This project is deployed on Github pages. The main page is named index.html.
+
 ## Credits
 ### Content
 The content of the website was written by me.
